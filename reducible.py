@@ -16,6 +16,7 @@ UT EID 1: tk24792
 
 """
 
+
 # the constant used to calculate the step size
 STEP_SIZE_CONSTANT = 3
 
@@ -109,15 +110,18 @@ def find_word(s, hash_table):
     pre: s is a string, and hash_table is a list representing the hash table.
     post: Returns True if s is found in hash_table, otherwise returns False.
     """
-    ind_it = hash_word(s, len(hash_table))
-    init_ind = ind_it
+    idx = hash_word(s, len(hash_table))
+    step = step_size(s)
+    initial_idx = idx
     while True:
-        if hash_table[ind_it] == s:
+        if hash_table[idx] == '':
+            return False
+        elif hash_table[idx] == s:
             return True
         else:
-            ind_it = (ind_it + step_size(s)) % len(hash_table)
-        if ind_it == init_ind:
-            return False
+            idx = (idx + step) % len(hash_table)
+            if idx == initial_idx:
+                return False
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
