@@ -182,16 +182,16 @@ def main():
     except EOFError:
         pass
     word_list_length = len(word_list)
-    N = 2 * word_list_length + 1
-    while not is_prime(N):
-        N += 1
-    hash_list = [''] * N
+    string_n = 2 * word_list_length + 1
+    while not is_prime(string_n):
+        string_n += 1
+    hash_list = [''] * string_n
     for word in word_list:
         insert_word(word, hash_list)
-    M = int(0.2 * word_list_length) + 1
-    while not is_prime(M):
-        M += 1
-    hash_memo = [''] * M
+    string_m = int(0.2 * word_list_length) + 1
+    while not is_prime(string_m):
+        string_m += 1
+    hash_memo = [''] * string_m
     for c in ['a', 'i', 'o']:
         if find_word(c, hash_list):
             insert_word(c, hash_memo)
